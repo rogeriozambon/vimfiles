@@ -1,0 +1,12 @@
+[submodule "bundle/nerdtree"]
+    path = bundle/nerdtree
+     url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-nerdtree-tabs"]
+    path = bundle/vim-nerdtree-tabs
+     url = git://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "bundle/ctrlp"]
+    path = bundle/ctrlp
+     url = git://github.com/kien/ctrlp.vim.git
+[submodule "bundle/rainbow_parentheses.vim"]
+    path = bundle/rainbow_parentheses.vim
+     url = git://github.com/kien/rainbow_parentheses.vim.git
