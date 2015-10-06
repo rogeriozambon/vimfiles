@@ -1,0 +1,5 @@
+Installation instructions:
+- git clone <this repo url> ~/.vim
+- ln -s ~/.vim/.vimrc ~/.vimrc
+- cd ~/.vim
+- git submodule update --init
