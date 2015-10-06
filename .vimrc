@@ -17,6 +17,7 @@ set smartcase
 set ls=2
 set number
 set cursorline
+colorscheme monokai
 
 set completeopt=menuone,longest
 set wildmode=list:longest,full
@@ -24,12 +25,22 @@ set wildignore+=.git
 
 set hidden
 
+set path=$PWD/**
 set backupdir=/tmp
 set directory=/tmp
 
 call pathogen#infect()            " initializes pathogen to manage plugins
 
 map <F2> :NERDTreeTabsToggle<CR>  " Map F2 to NERDTree (file navigator)
+map <Tab> gt
+
+" Activate visual mode in normal mode
+nmap <S-Up> V
+nmap <S-Down> V
+
+" These are mapped in visual mode
+vmap <S-Up> k
+vmap <S-Down> j
 
 " Add Ctrl+C, Ctrl+X, Ctrl+V keys to copy/cut/paste action
 vmap <C-c> "+yi
