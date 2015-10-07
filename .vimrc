@@ -33,14 +33,15 @@ set directory=/tmp
 call pathogen#infect()
 
 map <F2> :NERDTreeTabsToggle<CR>
+
+" Toggle tabs
 map <Tab> gt
 
-nnoremap <C-Down> :m .+1<CR>==
-nnoremap <C-Up> :m .-2<CR>==
-inoremap <C-Down> <Esc>:m .+1<CR>==gi
-inoremap <C-Up> <Esc>:m .-2<CR>==gi
-vnoremap <C-Down> :m '>+1<CR>gv=gv
-vnoremap <C-Up> :m '<-2<CR>gv=gv
+" Toggle comments
+map <C-_> <leader>c<Space>
+
+" CTRL+Z
+map <C-z> u<CR>
 
 " Activate visual mode in normal mode
 nmap <S-Up> V
@@ -49,6 +50,13 @@ nmap <S-Down> V
 " These are mapped in visual mode
 vmap <S-Up> k
 vmap <S-Down> j
+
+nnoremap <C-Down> :m .+1<CR>==
+nnoremap <C-Up> :m .-2<CR>==
+inoremap <C-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-Up> <Esc>:m .-2<CR>==gi
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gv
 
 " Add Ctrl+C, Ctrl+X, Ctrl+V keys to copy/cut/paste action
 vmap <C-c> "+yi
