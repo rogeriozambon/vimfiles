@@ -29,10 +29,18 @@ set path=$PWD/**
 set backupdir=/tmp
 set directory=/tmp
 
-call pathogen#infect()            " initializes pathogen to manage plugins
+" initializes pathogen to manage plugins
+call pathogen#infect()
 
-map <F2> :NERDTreeTabsToggle<CR>  " Map F2 to NERDTree (file navigator)
+map <F2> :NERDTreeTabsToggle<CR>
 map <Tab> gt
+
+nnoremap <C-Down> :m .+1<CR>==
+nnoremap <C-Up> :m .-2<CR>==
+inoremap <C-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-Up> <Esc>:m .-2<CR>==gi
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gv
 
 " Activate visual mode in normal mode
 nmap <S-Up> V
