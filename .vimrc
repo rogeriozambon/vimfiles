@@ -15,7 +15,7 @@ set ignorecase
 set smartcase
 
 set ls=2
-set number
+" set number
 set cursorline
 colorscheme monokai
 
@@ -26,8 +26,8 @@ set wildignore+=.git
 set hidden
 
 set path=$PWD/**
-set backupdir=/tmp
-set directory=/tmp
+" set backupdir=/tmp
+" set directory=/tmp
 
 " initializes pathogen to manage plugins
 call pathogen#infect()
@@ -50,6 +50,9 @@ nmap <S-Down> V
 " These are mapped in visual mode
 vmap <S-Up> k
 vmap <S-Down> j
+
+" Multiple cursors
+let g:multi_cursor_next_key = '<C-d>'
 
 nnoremap <C-Down> :m .+1<CR>==
 nnoremap <C-Up> :m .-2<CR>==
