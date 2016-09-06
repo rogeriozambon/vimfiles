@@ -1,74 +1,112 @@
 set nocompatible
-syntax enable
-set encoding=utf-8
-set showcmd
-filetype plugin indent on
 
-set nowrap
-set tabstop=2 shiftwidth=2
-set expandtab
-set backspace=indent,eol,start
+if filereadable(expand("~/.vundle.vim"))
+  source ~/.vundle.vim
+endif
 
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+syntax on
 
-set ls=2
-" set number
+autocmd FileType python       set et sw=4 ts=4 sts=4
+autocmd Filetype Gemfile      set ft=ruby
+autocmd Filetype Capfile      set ft=ruby
+autocmd Filetype gitcommit    setlocal spell textwidth=72
+
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ["node_modules", "tmp", "log/*", ".git"]
+let NERDTreeShowHidden = 1
+
+augroup markdown
+  au!
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
+autocmd Filetype markdown setlocal wrap
+autocmd Filetype markdown setlocal linebreak
+autocmd Filetype markdown setlocal nolist
+
+autocmd FileType vim,ruby,javascript,css,python,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+set t_Co=256
+
+silent! colorscheme soda
+highlight Normal ctermbg=None
+
+let mapleader = ","
+
+nnoremap / /\v
+vnoremap / /\v
+
+nnoremap <tab> %
+vnoremap <tab> %
+
+nnoremap j gj
+nnoremap k gk
+
+let g:AutoPairs = { '(': ')', '[': ']', '{': '}', "'": "'", '"': '"', '`': '`', '<': '>', '%': '%' }
+let g:bufferline_echo = 0
+
+" Save with ctrl+s
+noremap <silent> <C-S>  :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+
+" Indent guides.
+highlight IndentGuidesOdd  ctermbg=white
+highlight IndentGuidesEven ctermbg=lightgrey
+
+" Disable F1 for help.
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" Visual shift.
+vnoremap < <gv
+vnoremap > >gv
+
+" Forgot sudo?
+cmap w!! w !sudo tee % >/dev/null
+
+set autoindent
+set autoread
+set background=light
+set clipboard=unnamed
+set cmdheight=1
+"set colorcolumn=80
+set copyindent
 set cursorline
-colorscheme monokai
-
-set completeopt=menuone,longest
-set wildmode=list:longest,full
-set wildignore+=.git
-
+set encoding=utf-8
+set eol
+set expandtab
+set gdefault
 set hidden
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=1
+set linespace=5
+set list
+set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:·
+set nobackup
+set noerrorbells
+set noswapfile
+set novisualbell
+set nowrap
+set nowritebackup
+set number
+set scrolloff=8
+set showmatch
+set noshowmode
+set sidescroll=1
+set sidescrolloff=15
+set softtabstop=2
+set shiftwidth=2
+set smartcase
+set smartindent
+set tabstop=2
+set wildmenu
+set wildmode=list:longest
+set wildignore+=*.png,*.jpg,*.gif,*.o,.git,tmp/**,coverage/**,node_modules/**,.DS_Store
 
-set path=$PWD/**
-" set backupdir=/tmp
-" set directory=/tmp
-
-" initializes pathogen to manage plugins
-call pathogen#infect()
-
-map <F2> :NERDTreeTabsToggle<CR>
-
-" Toggle tabs
-map <Tab> gt
-
-" Toggle comments
-map <C-_> <leader>c<Space>
-
-" CTRL+Z
-map <C-z> u<CR>
-
-" Activate visual mode in normal mode
-nmap <S-Up> V
-nmap <S-Down> V
-
-" These are mapped in visual mode
-vmap <S-Up> k
-vmap <S-Down> j
-
-" Multiple cursors
-let g:multi_cursor_next_key = '<C-d>'
-
-nnoremap <C-Down> :m .+1<CR>==
-nnoremap <C-Up> :m .-2<CR>==
-inoremap <C-Down> <Esc>:m .+1<CR>==gi
-inoremap <C-Up> <Esc>:m .-2<CR>==gi
-vnoremap <C-Down> :m '>+1<CR>gv=gv
-vnoremap <C-Up> :m '<-2<CR>gv=gv
-
-" Add Ctrl+C, Ctrl+X, Ctrl+V keys to copy/cut/paste action
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <C-r><C-o>+
-
-" Enable Rainbow Parentheses
-au VimEnter * RainbowParenthesesToggleAll
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
